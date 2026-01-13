@@ -2,6 +2,14 @@
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:uipath="http://uipath.org/schema/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="x-uipath-initial-diagram" targetNamespace="http://www.omg.org/spec/BPMN/20100524/MODEL" exporter="UiPath Studio Web (https://uipath.com)" exporterVersion="ed651f2b">
   <bpmn:process id="Process_1" name="Process" isExecutable="false">
     <bpmn:extensionElements>
+      <uipath:variables version="v1">
+        <uipath:inputOutput id="error" name="Error" type="jsonSchema" elementId="Activity_Rd2NDL"><![CDATA[{"type":"object","properties":{"code":{"type":"string"},"message":{"type":"string"},"detail":{"type":"string"},"category":{"type":"string"},"status":{"type":"number"}}}]]></uipath:inputOutput>
+        <uipath:inputOutput id="content" name="content" type="string" elementId="Activity_Rd2NDL" />
+      </uipath:variables>
+      <uipath:bindings version="v1">
+        <uipath:binding id="bAUvZ88xx" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="GetForecastAgent" propertyAttribute="folderPath" />
+        <uipath:binding id="bsmuGJbBZ" name="name" type="string" default="GetForecastAgent" resource="process" resourceSubType="Agent" resourceKey="GetForecastAgent" propertyAttribute="name" />
+      </uipath:bindings>
       <uipath:migrationVersion version="7" />
     </bpmn:extensionElements>
     <bpmn:startEvent id="Event_start" name="Start event">
@@ -10,10 +18,22 @@
       </bpmn:extensionElements>
       <bpmn:outgoing>edge_Event_start-Activity_Rd2NDL</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:task id="Activity_Rd2NDL">
+    <bpmn:serviceTask id="Activity_Rd2NDL" name="GetForecastAgent">
+      <bpmn:extensionElements>
+        <uipath:activity version="v1">
+          <uipath:type value="Orchestrator.StartAgentJob" version="v2" />
+          <uipath:context>
+            <uipath:input name="name" type="string" value="=bindings.bsmuGJbBZ" />
+            <uipath:input name="folderPath" type="string" value="=bindings.bAUvZ88xx" />
+            <uipath:input name="_label" type="string" value="GetForecastAgent" />
+          </uipath:context>
+          <uipath:output name="Error" type="jsonSchema" source="=Error" var="error" />
+          <uipath:output name="content" type="string" source="=content" var="content" />
+        </uipath:activity>
+      </bpmn:extensionElements>
       <bpmn:incoming>edge_Event_start-Activity_Rd2NDL</bpmn:incoming>
       <bpmn:outgoing>edge_Activity_Rd2NDL-Event_IceFo3</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:serviceTask>
     <bpmn:endEvent id="Event_IceFo3">
       <bpmn:incoming>edge_Activity_Rd2NDL-Event_IceFo3</bpmn:incoming>
     </bpmn:endEvent>

@@ -1,0 +1,5 @@
+{
+  "Name": "GetForecastAgent",
+  "ProjectType": "Agent",
+  "MainFile": null
+}
