@@ -38,15 +38,23 @@
     <bpmn:endEvent id="Event_IceFo3">
       <bpmn:incoming>edge_Activity_Rd2NDL-Event_IceFo3</bpmn:incoming>
       <bpmn:incoming>edge_0t4Zb4</bpmn:incoming>
+      <bpmn:incoming>edge_Afct9F</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:task id="Activity_TyGg99">
       <bpmn:incoming>edge_T3RoAN</bpmn:incoming>
       <bpmn:outgoing>edge_0t4Zb4</bpmn:outgoing>
+      <bpmn:outgoing>edge_Activity_TyGg99-Activity_EXPFmo</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_EXPFmo">
+      <bpmn:incoming>edge_Activity_TyGg99-Activity_EXPFmo</bpmn:incoming>
+      <bpmn:outgoing>edge_Afct9F</bpmn:outgoing>
     </bpmn:task>
     <bpmn:sequenceFlow id="edge_Event_start-Activity_Rd2NDL" sourceRef="Event_start" targetRef="Activity_Rd2NDL" />
     <bpmn:sequenceFlow id="edge_Activity_Rd2NDL-Event_IceFo3" sourceRef="Activity_Rd2NDL" targetRef="Event_IceFo3" />
     <bpmn:sequenceFlow id="edge_T3RoAN" sourceRef="Activity_Rd2NDL" targetRef="Activity_TyGg99" />
     <bpmn:sequenceFlow id="edge_0t4Zb4" sourceRef="Activity_TyGg99" targetRef="Event_IceFo3" />
+    <bpmn:sequenceFlow id="edge_Activity_TyGg99-Activity_EXPFmo" sourceRef="Activity_TyGg99" targetRef="Activity_EXPFmo" />
+    <bpmn:sequenceFlow id="edge_Afct9F" sourceRef="Activity_EXPFmo" targetRef="Event_IceFo3" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
@@ -74,6 +82,12 @@
           <dc:Bounds x="346" y="109.4285659790039" width="100" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Activity_EXPFmo" bpmnElement="Activity_EXPFmo">
+        <dc:Bounds x="494" y="264.4285659790039" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="494" y="349.4285659790039" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_edge_Event_start-Activity_Rd2NDL" bpmnElement="edge_Event_start-Activity_Rd2NDL">
         <di:waypoint x="296" y="218" />
         <di:waypoint x="346" y="218" />
@@ -94,6 +108,18 @@
         <di:waypoint x="396" y="4.428565979003906" />
         <di:waypoint x="514" y="4.428565979003906" />
         <di:waypoint x="514" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_Activity_TyGg99-Activity_EXPFmo" bpmnElement="edge_Activity_TyGg99-Activity_EXPFmo">
+        <di:waypoint x="446" y="64" />
+        <di:waypoint x="470" y="64" />
+        <di:waypoint x="470" y="304" />
+        <di:waypoint x="494" y="304" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_Afct9F" bpmnElement="edge_Afct9F">
+        <di:waypoint x="594" y="304" />
+        <di:waypoint x="614" y="304" />
+        <di:waypoint x="614" y="218" />
+        <di:waypoint x="532" y="218" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
