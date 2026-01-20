@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:uipath="http://uipath.org/schema/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="x-uipath-initial-diagram" targetNamespace="http://www.omg.org/spec/BPMN/20100524/MODEL" exporter="UiPath Studio Web (https://uipath.com)" exporterVersion="ed651f2b">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:uipath="http://uipath.org/schema/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="x-uipath-initial-diagram" targetNamespace="http://www.omg.org/spec/BPMN/20100524/MODEL" exporter="UiPath Studio Web (https://uipath.com)" exporterVersion="36276f49">
   <bpmn:process id="Process_1" name="Process" isExecutable="false">
     <bpmn:extensionElements>
       <uipath:variables version="v1">
@@ -10,7 +10,7 @@
         <uipath:binding id="bAUvZ88xx" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="GetForecastAgent" propertyAttribute="folderPath" />
         <uipath:binding id="bsmuGJbBZ" name="name" type="string" default="GetForecastAgent" resource="process" resourceSubType="Agent" resourceKey="GetForecastAgent" propertyAttribute="name" />
       </uipath:bindings>
-      <uipath:migrationVersion version="7" />
+      <uipath:migrationVersion version="8" />
     </bpmn:extensionElements>
     <bpmn:startEvent id="Event_start" name="Start event">
       <bpmn:extensionElements>
@@ -33,12 +33,20 @@
       </bpmn:extensionElements>
       <bpmn:incoming>edge_Event_start-Activity_Rd2NDL</bpmn:incoming>
       <bpmn:outgoing>edge_Activity_Rd2NDL-Event_IceFo3</bpmn:outgoing>
+      <bpmn:outgoing>edge_T3RoAN</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:endEvent id="Event_IceFo3">
       <bpmn:incoming>edge_Activity_Rd2NDL-Event_IceFo3</bpmn:incoming>
+      <bpmn:incoming>edge_0t4Zb4</bpmn:incoming>
     </bpmn:endEvent>
+    <bpmn:task id="Activity_TyGg99">
+      <bpmn:incoming>edge_T3RoAN</bpmn:incoming>
+      <bpmn:outgoing>edge_0t4Zb4</bpmn:outgoing>
+    </bpmn:task>
     <bpmn:sequenceFlow id="edge_Event_start-Activity_Rd2NDL" sourceRef="Event_start" targetRef="Activity_Rd2NDL" />
     <bpmn:sequenceFlow id="edge_Activity_Rd2NDL-Event_IceFo3" sourceRef="Activity_Rd2NDL" targetRef="Event_IceFo3" />
+    <bpmn:sequenceFlow id="edge_T3RoAN" sourceRef="Activity_Rd2NDL" targetRef="Activity_TyGg99" />
+    <bpmn:sequenceFlow id="edge_0t4Zb4" sourceRef="Activity_TyGg99" targetRef="Event_IceFo3" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
@@ -60,6 +68,12 @@
           <dc:Bounds x="496" y="241" width="36" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Activity_TyGg99" bpmnElement="Activity_TyGg99">
+        <dc:Bounds x="346" y="24.428565979003906" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="346" y="109.4285659790039" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_edge_Event_start-Activity_Rd2NDL" bpmnElement="edge_Event_start-Activity_Rd2NDL">
         <di:waypoint x="296" y="218" />
         <di:waypoint x="346" y="218" />
@@ -67,6 +81,19 @@
       <bpmndi:BPMNEdge id="BPMNEdge_edge_Activity_Rd2NDL-Event_IceFo3" bpmnElement="edge_Activity_Rd2NDL-Event_IceFo3">
         <di:waypoint x="446" y="218" />
         <di:waypoint x="496" y="218" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_T3RoAN" bpmnElement="edge_T3RoAN">
+        <di:waypoint x="396" y="178" />
+        <di:waypoint x="396" y="121" />
+        <di:waypoint x="466" y="121" />
+        <di:waypoint x="466" y="64" />
+        <di:waypoint x="446" y="64" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_0t4Zb4" bpmnElement="edge_0t4Zb4">
+        <di:waypoint x="396" y="24" />
+        <di:waypoint x="396" y="4.428565979003906" />
+        <di:waypoint x="514" y="4.428565979003906" />
+        <di:waypoint x="514" y="200" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
